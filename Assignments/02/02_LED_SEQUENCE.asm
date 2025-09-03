@@ -1,0 +1,27 @@
+.MODEL SMALL
+.STACK 100H
+
+.DATA
+
+.CODE
+MAIN PROC
+    ; INITIALIZING DS
+    MOV AX, @DATA
+    MOV DS, AX
+    
+    MOV DX, 2070H
+    MOV AL, 01
+    MOV CX, 8
+    
+    LED:
+    OUT DX, AL
+    ROL AL, 1
+    LOOP LED
+    
+    MOV CX, 8
+    LOOP LED
+
+    EXIT:
+    MOV AH,4CH
+    INT 21H
+    END MAIN
